@@ -11,7 +11,6 @@ var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
   function generatePassword() {
 
 // Defines the variables
-  var password = " ";
   var charSet = [];
 
 // Asks for number of characters for the password.
@@ -27,7 +26,7 @@ var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
   var charUpper = confirm("Do you want uppercase letters?");
 
     if (charUpper) {
-      charSet.push(...alphaUpper)
+    charSet.push(...alphaUpper)
     }
 
   var charLower = confirm("Do you want lowercase letters?");
@@ -47,8 +46,6 @@ var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
     if (specChar) {
     charSet.push(...specialChar)
   }
-
-  console.log(charSet);
   
   // Alert if no options were selected
   if (!charUpper && !charLower && !num && !specChar) {
@@ -57,21 +54,13 @@ var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
   }
 
 
-  const random = charSet[Math.floor(Math.random()*charSet.length)]
-  console.log(random);
-
 // Loops through options in the set and concatenates them together, using a random choice
-  var result = ' ';
-  var charLength = charSet.length;
+  var password = '';
   for(let i=0; i <charLength; i++) {
-    result += charLength.charAt(Math.floor(Math.random()*charLength));
+  password += charSet[Math.floor(Math.random()*charSet.length)];
   }
-
+  return password;
 }
-
-
-generatePassword()
-
 
 // Write password to the #password input
 function writePassword() {
