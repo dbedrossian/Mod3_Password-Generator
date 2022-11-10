@@ -26,53 +26,46 @@ function generatePassword() {
 // Alerts if password length is outside the range.
   if (charLength <8 || charLength >120) {
     alert("Characters must be between 8-120 characters long. Please re-enter.")
-    var charLength = prompt("How many characters? (Please select between 8 and 120 characters)");
+    generatePassword();
   }
 
 // Confirms each of the character sets, then assigns the string to the total characters if the user selects "yes"
   var charUpper = confirm("Do you want uppercase letters?");
 
     if (charUpper) {
-      charSet += alphaUpper
+    charSet += alphaUpper
     }
 
   var charLower = confirm("Do you want lowercase letters?");
   
-  if (charLower) {
+    if (charLower) {
     charSet += alphaLower
   }
 
   var num = confirm("Do you want numbers?");
 
-  if (num) {
+    if (num) {
     charSet += num
   }
 
   var specChar = confirm("Do you want special characters?");
 
-  if (specChar) {
+    if (specChar) {
     charSet += specChar
   }
   
-  // if ((specChar) && (!charUpper) && (!charLower) && (!num)) {
-  //   var specChar = "!@#$%^&*_-+=";}
-  //   else specChar = "random";
+  // Alert if no options were selected
+  if (!charUpper && !charLower && !num && !specChar) {
+    alert("You must choose one.")
+    generatePassword();
+  }
 
-
-
-    
+// Loops through options in the set and concatenates them together, using a random choice
   var result = ' ';
-  var charLength = specChar.length;
+  var charLength = charSet.length;
   for(let i=0; i <length; i++) {
     result += specChar.charAt(Math.floor(Math.random()*charLength));
   }
-
-  // var result = ' ';
-  // var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  // var charLength = alphaUpper.length;
-  // for(let i=0; i <length; i++) {
-  //   result += alphaUpper.charAt(Math.floor(Math.random()*charLength));
-
 
 return result;
 
