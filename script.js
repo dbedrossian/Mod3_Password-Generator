@@ -29,20 +29,34 @@ function generatePassword() {
     var charLength = prompt("How many characters? (Please select between 8 and 120 characters)");
   }
 
-// Confirms the uppercase letters, then assigns the string to the total characters if the user selects "yes"
-  var charUpper = confirm("Do you want uppercase letters?")
+// Confirms each of the character sets, then assigns the string to the total characters if the user selects "yes"
+  var charUpper = confirm("Do you want uppercase letters?");
 
     if (charUpper) {
       charSet += alphaUpper
-    } += 
+    }
 
-  var charLower = confirm("Do you want lowercase letters?")
-  var num = confirm("Do you want numbers?")
-  var specChar = confirm("Do you want special characters?");
+  var charLower = confirm("Do you want lowercase letters?");
   
-  if ((specChar) && (!charUpper) && (!charLower) && (!num)) {
-    var specChar = "!@#$%^&*_-+=";}
-    else specChar = "random";
+  if (charLower) {
+    charSet += alphaLower
+  }
+
+  var num = confirm("Do you want numbers?");
+
+  if (num) {
+    charSet += num
+  }
+
+  var specChar = confirm("Do you want special characters?");
+
+  if (specChar) {
+    charSet += specChar
+  }
+  
+  // if ((specChar) && (!charUpper) && (!charLower) && (!num)) {
+  //   var specChar = "!@#$%^&*_-+=";}
+  //   else specChar = "random";
 
 
 
