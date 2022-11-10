@@ -2,23 +2,17 @@
 var generateBtn = document.querySelector("#generate");
 
 // Arrays of all possible options
-// var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-// var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// var numbers = ["0","1","2","3","4","5","6","7","8","9"];
-// var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
-
-var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var alphaLower = "abcdefghijklmnopqrstuvwxyz";
-var numbers = "0123456789";
-var specChar = "!@#$%^&*_-+=";
-
+var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numbers = ["0","1","2","3","4","5","6","7","8","9"];
+var specialChar = ["!","@","#","$","%","^","&","*","_","-","+","="];
 
 // Start of function
+  function generatePassword() {
 
-function generatePassword() {
 // Defines the variables
-  var password = "";
-  var charSet = "";
+  var password = " ";
+  var charSet = [];
 
 // Asks for number of characters for the password.
   var charLength = prompt("How many characters? (Please select between 8 and 120 characters)");
@@ -33,26 +27,28 @@ function generatePassword() {
   var charUpper = confirm("Do you want uppercase letters?");
 
     if (charUpper) {
-    charSet += alphaUpper
+      charSet.push(...alphaUpper)
     }
 
   var charLower = confirm("Do you want lowercase letters?");
   
     if (charLower) {
-    charSet += alphaLower
+    charSet.push(...alphaLower)
   }
 
   var num = confirm("Do you want numbers?");
 
     if (num) {
-    charSet += num
+    charSet.push(...numbers)
   }
 
   var specChar = confirm("Do you want special characters?");
 
     if (specChar) {
-    charSet += specChar
+    charSet.push(...specialChar)
   }
+
+  console.log(charSet);
   
   // Alert if no options were selected
   if (!charUpper && !charLower && !num && !specChar) {
@@ -60,18 +56,21 @@ function generatePassword() {
     generatePassword();
   }
 
+
+  const random = charSet[Math.floor(Math.random()*charSet.length)]
+  console.log(random);
+
 // Loops through options in the set and concatenates them together, using a random choice
   var result = ' ';
   var charLength = charSet.length;
-  for(let i=0; i <length; i++) {
-    result += specChar.charAt(Math.floor(Math.random()*charLength));
+  for(let i=0; i <charLength; i++) {
+    result += charLength.charAt(Math.floor(Math.random()*charLength));
   }
-
-return result;
 
 }
 
-console.log(generatePassword(5));
+
+generatePassword()
 
 
 // Write password to the #password input
@@ -88,6 +87,14 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
+
+// ------------------------------------------------------
+
+
+// var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// var alphaLower = "abcdefghijklmnopqrstuvwxyz";
+// var numbers = "0123456789";
+// var specChar = "!@#$%^&*_-+=";
 
 
 // var randomUpper = alphaUpper[Math.floor(Math.random()*alphaUpper.length)];
